@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "hardcore_checkpoints",
   "version": "${version}",
-  "name": "Hardcore Checkpoints",
+  "name": "Steins;Gate",
   "description": "World checkpoints and safe death rollback for Minecraft hardcore worlds.",
   "authors": [
     "Exmeow"

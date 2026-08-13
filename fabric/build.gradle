@@ -45,10 +45,6 @@ dependencies {
 	modImplementation("net.blay09.mods:balm-fabric:${project.balm_version}") {
 		exclude group: 'mezz.jei'
 	}
-
-	testImplementation platform('org.junit:junit-bom:5.11.4')
-	testImplementation 'org.junit.jupiter:junit-jupiter'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 evaluationDependsOn(':supervisor')
@@ -72,10 +68,6 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	options.release = 21
-}
-
-tasks.withType(Test).configureEach {
-	useJUnitPlatform()
 }
 
 java {

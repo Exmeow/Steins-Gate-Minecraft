@@ -39,7 +39,7 @@ Minecraft Java Edition 1.21.1 Fabric Mod，命名空间为 `hardcore_checkpoints
 - Java 21监督程序、Mod内嵌自动交接、随机回环控制令牌、只读状态端口、60秒死亡停服、子进程树处理、恢复重启和客户端自动重连；
 - 已激活核心的青色吸入粒子、选中核心5秒读条渐强粒子、多人回档等待音乐，以及解冻后的全局存档/回档音效。
 
-Phase 7和Phase 9的代码路径与自动化测试已实现；本次实机多人死亡已验证事务恢复和服务器重启成功，修复后的客户端等待页接管/自动重连、强制终止和大型世界恢复仍需在实际专用服务器部署中复验。
+Phase 7和Phase 9的代码路径已实现；本次实机多人死亡已验证事务恢复和服务器重启成功。项目当前不包含Gradle自动化测试源码或测试依赖，修复后的客户端等待页接管/自动重连、强制终止和大型世界恢复仍需在实际专用服务器部署中复验。
 
 NeoForge 尚未实现，也没有 NeoForge 子工程、依赖、入口或元数据。
 
@@ -135,15 +135,15 @@ Linux使用`supervisor/bin/supervisor`。状态端口默认`25566`，需要按�
 
 同一来源的两份世界同时启动不受支持，不承诺检测、隔离或数据安全。
 
-## 验证
+## 构建验证
 
-完整验证命令：
+生产代码与制品构建命令：
 
 ```bash
-./gradlew clean build
+./gradlew :control-core:compileJava :supervisor:compileJava :fabric:compileJava :fabric:compileClientJava :fabric:remapJar
 ```
 
-当前自动化结果共57项测试：`control-core` 1项、`supervisor` 11项、`fabric` 45项，全部通过；完整构建同时生成内嵌监督器的Fabric Mod和监督程序ZIP/TAR发行包。已审计内嵌监督JAR与独立uber JAR逐字节一致，`common`无Fabric/NeoForge导入，`control-core`和`supervisor`无Minecraft/Loader/Balm导入，Fabric JAR无NeoForge元数据或重复条目。
+项目当前不包含Gradle测试源码、JUnit依赖或显式`Test`任务配置。上述命令仅编译生产代码，并生成内嵌监督器的Fabric Mod。已有制品审计确认`common`无Fabric/NeoForge导入，`control-core`和`supervisor`无Minecraft/Loader/Balm导入，Fabric JAR无NeoForge元数据或重复条目。
 
 尚未完成修复后的客户端等待页/自动重连复验、Configuration长时间等待、Play→Configuration重配置、监督程序60秒强制终止、大型世界恢复、磁盘耗尽和完整跨Windows/Linux部署验收。
 

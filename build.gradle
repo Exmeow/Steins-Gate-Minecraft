@@ -5,8 +5,14 @@ plugins {
 allprojects {
 	version = project.mod_version
 	group = project.maven_group
+
+	plugins.withId('base') {
+		tasks.named('build') {
+			setDependsOn([tasks.named('assemble')])
+		}
+	}
 }
 
 tasks.named('build') {
-	dependsOn(':fabric:build', ':supervisor:build')
+	dependsOn(':fabric:assemble', ':supervisor:assemble')
 }
