@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "hardcore_checkpoints.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "DedicatedServerConsoleMixin",
+    "MinecraftServerDifficultyMixin",
+    "ServerGamePacketListenerMixin"
+  ],
+  "client": [
+    "client.CheckpointPauseScreenMixin",
+    "client.CreateWorldCheckpointToggleMixin",
+    "client.CreateWorldDifficultyControlMixin",
+    "client.WorldCreationDifficultyMixin",
+    "client.OptionsScreenDifficultyMixin",
+    "client.MusicManagerMixin",
+    "client.SelectWorldScreenMixin",
+    "client.WorldListEntryAccessor",
+    "client.WorldListEntryJoinGuardMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

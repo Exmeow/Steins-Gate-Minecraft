@@ -1,0 +1,60 @@
+plugins {
+	id 'application'
+}
+
+description = 'Hardcore Checkpoints Java 21 server supervisor'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation project(':control-core')
+
+	testImplementation platform('org.junit:junit-bom:5.11.4')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+application {
+	mainClass = 'hardcore_checkpoints.supervisor.SupervisorMain'
+	applicationDefaultJvmArgs = ['--add-modules', 'jdk.httpserver']
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 21
+	options.compilerArgs += ['--add-modules', 'jdk.httpserver']
+}
+
+tasks.withType(JavaExec).configureEach {
+	jvmArgs '--add-modules', 'jdk.httpserver'
+}
+
+tasks.withType(Test).configureEach {
+	useJUnitPlatform()
+	jvmArgs '--add-modules', 'jdk.httpserver'
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': application.mainClass.get()
+	}
+}
+
+tasks.register('uberJar', Jar) {
+	archiveClassifier = 'all'
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	dependsOn configurations.runtimeClasspath
+	from sourceSets.main.output
+	from {
+		configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+	manifest {
+		attributes 'Main-Class': application.mainClass.get()
+	}
+}

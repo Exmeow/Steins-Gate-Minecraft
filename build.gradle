@@ -1,0 +1,12 @@
+plugins {
+	id 'base'
+}
+
+allprojects {
+	version = project.mod_version
+	group = project.maven_group
+}
+
+tasks.named('build') {
+	dependsOn(':fabric:build', ':supervisor:build')
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "hardcore_checkpoints:block/checkpoint_core_inactive"
+    },
+    "lit=true": {
+      "model": "hardcore_checkpoints:block/checkpoint_core_active"
+    }
+  }
+}

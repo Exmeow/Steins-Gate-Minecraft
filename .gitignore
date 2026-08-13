@@ -1,0 +1,53 @@
+# Repository whitelist: everything is ignored unless explicitly allowed.
+/*
+
+# Repository metadata
+!/.gitignore
+!/.gitattributes
+!/LICENSE
+
+# Maintained documentation
+!/README.md
+
+# Root build configuration
+!/build.gradle
+!/settings.gradle
+!/gradle.properties
+!/gradlew
+!/gradlew.bat
+
+# Gradle wrapper
+!/gradle/
+/gradle/*
+!/gradle/wrapper/
+/gradle/wrapper/*
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
+
+# Shared source module
+!/common/
+/common/*
+!/common/build.gradle
+!/common/src/
+!/common/src/**
+
+# Pure Java control and recovery core
+!/control-core/
+/control-core/*
+!/control-core/build.gradle
+!/control-core/src/
+!/control-core/src/**
+
+# Java 21 supervisor application
+!/supervisor/
+/supervisor/*
+!/supervisor/build.gradle
+!/supervisor/src/
+!/supervisor/src/**
+
+# Fabric source module
+!/fabric/
+/fabric/*
+!/fabric/build.gradle
+!/fabric/src/
+!/fabric/src/**

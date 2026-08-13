@@ -1,0 +1,5 @@
+plugins {
+	id 'base'
+}
+
+description = 'Loader-neutral Hardcore Checkpoints sources and resources'

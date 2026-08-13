@@ -1,0 +1,20 @@
+{
+  "checkpoint_success": {
+    "sounds": [
+      "hardcore_checkpoints:travel_1"
+    ]
+  },
+  "rollback_success": {
+    "sounds": [
+      "hardcore_checkpoints:travel_2"
+    ]
+  },
+  "dedicated_recovery_music": {
+    "sounds": [
+      {
+        "name": "hardcore_checkpoints:ruins",
+        "stream": true
+      }
+    ]
+  }
+}
